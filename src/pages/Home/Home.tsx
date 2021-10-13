@@ -10,49 +10,66 @@ import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { useHomeController } from './hooks/useHomeController'
 
 export const Home = () => {
-  const { onClickViewHistorical, getSearchText, city } = useHomeController()
-
+  const { onClickViewHistorical, getSearchText, city, data, locationAllow, message, currentLocation } = useHomeController()
 
   return (
-    <Container>
+    locationAllow.allow ?
+    (
+      <Container>
       <CustomTextField label="Search" placeholder="Search by city" onChange={(e: any) => getSearchText(e.target.value)} value={city}/>
       <VerticalSpace vSpace={2} />
-      <CardElement variant="elevation">
-        <CardContent>
-            <Center>
-                <img src="http://openweathermap.org/img/w/04d.png" height="120" width="120" />
-                <CustomTypography label="24.28° C" variant="h4"/>
-                <LocationDisplayIcon /> <StyledCityFont>Indore</StyledCityFont>
-              <Grid container>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                  <CustomTypography label="Minimum tempreture"/>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                  <CustomTypography label="24.28° C"/>
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                  <CustomTypography label="Maximum tempreture"/>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                  <CustomTypography label="24.28° C"/>
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                <CustomTypography label="Wind Speed"/>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6}>
-                  <CustomTypography label="24° C"/>
-                </Grid>
-              </Grid>
-              <VerticalSpace vSpace={1} />
-              <CustomButton size="medium" label="View" variant="contained" color="info" onClick={onClickViewHistorical}/>
-            </Center>
-        </CardContent>
-      </CardElement>
+      {
+        data ? 
+        (
+          <CardElement variant="elevation">
+            <CardContent>
+                <Center>
+                    
+                    <h3>{currentLocation && <CustomTypography variant="h5" label={`Current Location Data`} />}</h3>
+                    <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="120" width="120" />
+                    <CustomTypography label={`${data.main.temp}° C`} variant="h4"/>
+                    <LocationDisplayIcon /> <StyledCityFont>{data.name}</StyledCityFont>
+                  <Grid container>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <CustomTypography label="Minimum tempreture"/>
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <CustomTypography label={`${data.main.temp_min}° C`} />
+                    </Grid>
+                  </Grid>
+                  <Grid container>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <CustomTypography label="Maximum tempreture"/>
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <CustomTypography label={`${data.main.temp_max}° C`} />
+                    </Grid>
+                  </Grid>
+                  <Grid container>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                    <CustomTypography label="Wind Speed" />
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <CustomTypography label={`${data.wind.speed}`}/>
+                    </Grid>
+                  </Grid>
+                  <VerticalSpace vSpace={1} />
+                  <CustomButton size="medium" label="View" variant="contained" color="info" onClick={onClickViewHistorical} />
+                </Center>
+            </CardContent>
+          </CardElement> 
+        )  
+        :
+        (
+          <CustomTypography variant="h5" label={message}/>
+        )
+      }
     </Container>
+    ) : (
+      <Center>
+        <CustomTypography variant="h5" label={locationAllow.message} />
+      </Center>
+    )
   );
 }
 
