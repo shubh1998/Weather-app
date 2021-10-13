@@ -40,7 +40,7 @@ export const ViewHistorical = ()=>{
     (
       <Container>
         <DisplayFlex>
-            <Link to="/"><CustomTypography variant="h6" label="Home "/></Link><CustomTypography variant="h6" label="/View Details"/>
+            <Link to="/"><CustomTypography variant="h6" label="Home"/></Link><div>&nbsp;</div><CustomTypography variant="h6" label="/ View Details"/>
         </DisplayFlex>
         <VerticalSpace vSpace={1} />
         {tempretureGraphData && <Line data={tempretureGraphData} height={20} width={100}/> }
