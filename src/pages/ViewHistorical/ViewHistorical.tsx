@@ -10,6 +10,8 @@ import { CustomTypography } from '../../components/ui-kit/Typography';
 import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled'
+import { useViewHistoricalController } from './hooks/useViewHistoricalController';
+import { Line } from "react-chartjs-2";
 
 function createData(
   name: string,
@@ -30,33 +32,99 @@ const rows = [
 ];
 
 export const ViewHistorical = ()=>{
+  const { windGraphData, dataLoaded, tempretureGraphData, cloudAndSolarGraphData, data } = useViewHistoricalController()
+
   return (
-    <Container>
+    dataLoaded 
+    ?
+    (
+      <Container>
         <DisplayFlex>
             <Link to="/"><CustomTypography variant="h6" label="Home "/></Link><CustomTypography variant="h6" label="/View Details"/>
         </DisplayFlex>
         <VerticalSpace vSpace={1} />
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableBody>
-                    {rows.map((row) => (
-                        <TableRow
-                          key={row.name}
-                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                          <TableCell component="th" scope="row">
-                              {row.name}
-                          </TableCell>
-                          <TableCell align="right">{row.calories}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    </Container>
+        {tempretureGraphData && <Line data={tempretureGraphData} height={20} width={100}/> }
+        <VerticalSpace vSpace={1} />
+        {windGraphData && <Line data={windGraphData} height={20} width={100}/> }
+        <VerticalSpace vSpace={1} />
+        {cloudAndSolarGraphData && <Line data={cloudAndSolarGraphData} height={20} width={100}/> }
+        <VerticalSpace vSpace={2} />
+        <CustomTypography variant="h5" label="Summary" />
+        <VerticalSpace vSpace={1} />
+        {
+          data &&
+          <>
+          <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">     
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Tempreture</TableCell>
+                      {
+                            data.data.map((item:any) => <TableCell>{item.datetime}</TableCell>)
+                      }
+                    </TableRow>
+                  </TableHead>  
+                  <TableBody>
+                      <TableRow>
+                        <TableCell>Min</TableCell>  
+                        {
+                          data.data.map((item:any) => <TableCell>{item.min_temp}</TableCell>)
+                        }
+                        <TableCell align="right"></TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Max</TableCell>
+                        {
+                          data.data.map((item:any) => <TableCell>{item.max_temp}</TableCell>)
+                        }
+                      </TableRow>
+                  </TableBody>
+              </Table>
+          </TableContainer>
+          <VerticalSpace vSpace={1} />
+          <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">     
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Wind</TableCell>
+                      {
+                            data.data.map((item:any) => <TableCell>{item.datetime}</TableCell>)
+                      }
+                    </TableRow>
+                  </TableHead>  
+                  <TableBody>
+                      <TableRow>
+                        <TableCell>Wind Speed</TableCell>  
+                        {
+                          data.data.map((item:any) => <TableCell>{item.wind_spd}</TableCell>)
+                        }
+                        <TableCell align="right"></TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Gust Wind Speed</TableCell>
+                        {
+                          data.data.map((item:any) => <TableCell>{item.wind_gust_spd}</TableCell>)
+                        }
+                      </TableRow>
+                  </TableBody>
+              </Table>
+          </TableContainer>
+          </>
+        }
+      </Container>
+    ) :
+    (
+      <Center>
+        <CustomTypography variant="h5" label="Loading....." />
+      </Center>
+    )
   );
 }
 
 const DisplayFlex = styled.div({
     display: 'flex'
+})
+
+const Center = styled.div({
+  textAlign: 'center'
 })
