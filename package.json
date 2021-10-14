@@ -10,6 +10,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "axios": "^0.23.0",
+    "lodash": "^4.17.21",
     "react": "latest",
     "react-chartjs-2": "^3.0.5",
     "react-dom": "latest",
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.175",
     "@types/react-router-dom": "^5.3.1"
   }
 }
