@@ -9,6 +9,7 @@ export const useHomeController = () => {
     const { search } = useLocation()
     const cityQuery= new URLSearchParams(search).get('city')
     const [city, setCity] = useState<string>('')
+    const [cityForRouteQuery, setCityForRouteQuery] = useState<string>('')
     const [data, setData] = useState<any>(null)
     const [locationAllow, setLocationAllow] = useState({
         allow: false,
@@ -21,6 +22,7 @@ export const useHomeController = () => {
         try{
             const res: any = await axios(`${process.env.REACT_APP_API_URL}/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_API_SECRET_KEY}`)
             if(res.data){
+                setCityForRouteQuery(res.data.name)
                 setData(res.data)
                 setCurrentLocation(true)
             }
@@ -46,7 +48,8 @@ export const useHomeController = () => {
     }, [location])
 
     const onClickViewHistorical = ()=>{
-        history.push('/view-historical')
+        console.log(city)
+        history.push(`/view-historical?city=${cityForRouteQuery}&startdate=2021-10-06&enddate=2021-10-12`)
     } 
     
     const getSearchText = (value: any)=>{
@@ -68,6 +71,7 @@ export const useHomeController = () => {
 
     useEffect(()=>{
         if(cityQuery != null){
+            setCityForRouteQuery(cityQuery)
             setCity(cityQuery)
             if(cityQuery !== ""){
                 fetchWeatherData({cityName: cityQuery})
