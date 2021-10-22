@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
+import { HistoricalDataArrayType } from '../../../utils/types/HistoricalDataArrayType'
 import { HistoricalDataType } from '../../../utils/types/HistoricalDataType'
 import { LineChartGraphDataType } from '../../../utils/types/LineChartGraphDataType'
 
@@ -294,12 +295,12 @@ export const useViewHistoricalController = () => {
         }).then((res:any) => {
             setdataLoaded(true)
             setData(res)
-            const labels = res.data.map((item:any) => item.datetime)
-            const minTemperature = res.data.map((item:any) => item.min_temp)
-            const maxTemperature = res.data.map((item:any) => item.max_temp)
-            const maxWindSpeed = res.data.map((item:any) => item.max_wind_spd)
-            const solarRadData = res.data.map((item:any) => item.solar_rad)
-            const cloudsData = res.data.map((item:any) => item.clouds)
+            const labels = res.data.map((item: HistoricalDataArrayType) => item.datetime)
+            const minTemperature = res.data.map((item: HistoricalDataArrayType) => item.min_temp)
+            const maxTemperature = res.data.map((item: HistoricalDataArrayType) => item.max_temp)
+            const maxWindSpeed = res.data.map((item: HistoricalDataArrayType) => item.max_wind_spd)
+            const solarRadData = res.data.map((item: HistoricalDataArrayType) => item.solar_rad)
+            const cloudsData = res.data.map((item: HistoricalDataArrayType) => item.clouds)
             setTemperatureGraphData({
                 labels,
                 datasets: [

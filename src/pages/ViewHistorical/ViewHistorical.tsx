@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled'
 import { useViewHistoricalController } from './hooks/useViewHistoricalController';
 import { Line } from "react-chartjs-2";
+import { HistoricalDataArrayType } from '../../utils/types/HistoricalDataArrayType';
 
 export const ViewHistorical = ()=>{
   const { windGraphData, dataLoaded, temperatureGraphData, cloudAndSolarGraphData, data, cityQuery } = useViewHistoricalController()
@@ -58,7 +59,7 @@ export const ViewHistorical = ()=>{
                     <TableRow>
                       <TableCell align="center">Temperature</TableCell>
                       {
-                            data.data.map((item:any) => <TableCell align="center">{item.datetime}</TableCell>)
+                            data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.datetime}</TableCell>)
                       }
                     </TableRow>
                   </TableHead>  
@@ -66,14 +67,14 @@ export const ViewHistorical = ()=>{
                       <TableRow>
                         <TableCell align="center">Min</TableCell>  
                         {
-                          data.data.map((item:any) => <TableCell align="center">{item.min_temp}</TableCell>)
+                          data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.min_temp}</TableCell>)
                         }
                         <TableCell align="right"></TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="center">Max</TableCell>
                         {
-                          data.data.map((item:any) => <TableCell align="center">{item.max_temp}</TableCell>)
+                          data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.max_temp}</TableCell>)
                         }
                       </TableRow>
                   </TableBody>
@@ -86,7 +87,7 @@ export const ViewHistorical = ()=>{
                     <TableRow>
                       <TableCell align="center">Wind</TableCell>
                       {
-                            data.data.map((item:any) => <TableCell align="center">{item.datetime}</TableCell>)
+                            data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.datetime}</TableCell>)
                       }
                     </TableRow>
                   </TableHead>  
@@ -94,14 +95,14 @@ export const ViewHistorical = ()=>{
                       <TableRow>
                         <TableCell align="center">Wind Speed</TableCell>  
                         {
-                          data.data.map((item:any) => <TableCell align="center">{item.wind_spd}</TableCell>)
+                          data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.wind_spd}</TableCell>)
                         }
                         <TableCell align="right"></TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell align="center">Gust Wind Speed</TableCell>
                         {
-                          data.data.map((item:any) => <TableCell align="center">{item.wind_gust_spd}</TableCell>)
+                          data.data.map((item: HistoricalDataArrayType) => <TableCell align="center">{item.wind_gust_spd}</TableCell>)
                         }
                       </TableRow>
                   </TableBody>
