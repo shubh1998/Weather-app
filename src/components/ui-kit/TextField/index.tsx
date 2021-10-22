@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import PropTypes from 'prop-types'
 
-const CustomTextField = ({
+export const CustomTextField = ({
   name,
   label,
   placeholder,
@@ -81,5 +81,3 @@ CustomTextField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
 }
-
-export default CustomTextField

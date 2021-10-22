@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import PropTypes from 'prop-types'
 import { ReactElement } from 'react'
 
-const CustomButton = ({
+export const CustomButton = ({
   type,
   variant,
   size,
@@ -69,5 +69,3 @@ CustomButton.propTypes = {
   endIcon: PropTypes.element,
   disableElevation: PropTypes.bool,
 }
-
-export default CustomButton

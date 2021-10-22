@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { CustomTypography } from '../../components/ui-kit/Typography';
 import { Container, Grid } from '@mui/material';
-import CustomButton from '../../components/ui-kit/Button';
-import CustomTextField from '../../components/ui-kit/TextField';
+import { CustomButton } from '../../components/ui-kit/Button';
+import { CustomTextField } from '../../components/ui-kit/TextField';
 import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { useHomeController } from './hooks/useHomeController'
 
