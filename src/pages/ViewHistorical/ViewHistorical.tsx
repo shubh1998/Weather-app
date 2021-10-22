@@ -13,24 +13,6 @@ import styled from '@emotion/styled'
 import { useViewHistoricalController } from './hooks/useViewHistoricalController';
 import { Line } from "react-chartjs-2";
 
-function createData(
-  name: string,
-  calories: string,
-) {
-  return { name, calories };
-}
-
-const rows = [
-  createData('City', 'Indore'),
-  createData('Country', 'India'),
-  createData('Wind Speed', '7.41'),
-  createData('Minimum Temperature', '24° C'),
-  createData('Maximum Temperature', '24° C'),
-  createData('Pressure', '1004'),
-  createData('Sea Level', '1004'),
-  createData('Ground Level', '1004'),
-];
-
 export const ViewHistorical = ()=>{
   const { windGraphData, dataLoaded, temperatureGraphData, cloudAndSolarGraphData, data, cityQuery } = useViewHistoricalController()
 

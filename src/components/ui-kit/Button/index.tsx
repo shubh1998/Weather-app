@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 import PropTypes from 'prop-types'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement } from 'react'
 
 const CustomButton = ({
   type,

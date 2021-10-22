@@ -5,8 +5,6 @@ import { VerticalSpace } from '../../ui-kit/VerticalSpace';
 import { useTheme } from '@mui/system';
 
 export const Navbar = ({ children }:{ children?: any }) => {
-    const theme = useTheme();
-
     return (
         <>
             <PaperStyled>
