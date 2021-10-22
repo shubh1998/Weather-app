@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import PropTypes from 'prop-types'
 import { ReactElement } from 'react'
 
 export const CustomButton = ({
@@ -43,29 +42,4 @@ export const CustomButton = ({
       { label }
     </Button>
   )
-}
-CustomButton.defaultProps = {
-  variant: 'contained',
-  size: 'medium',
-  disabled: false,
-  fullWidth: false,
-  type: 'button',
-  onClick: () => null,
-  startIcon: null,
-  endIcon: null,
-  disableElevation: false,
-}
-
-CustomButton.propTypes = {
-  variant: PropTypes.oneOf([ 'contained', 'outlined', 'text' ]),
-  type: PropTypes.oneOf([ 'submit', 'button' ]),
-  color: PropTypes.string,
-  size: PropTypes.oneOf([ 'large', 'medium', 'small' ]),
-  label: PropTypes.string,
-  disabled: PropTypes.bool,
-  fullWidth: PropTypes.bool,
-  onClick: PropTypes.func,
-  startIcon: PropTypes.element,
-  endIcon: PropTypes.element,
-  disableElevation: PropTypes.bool,
 }

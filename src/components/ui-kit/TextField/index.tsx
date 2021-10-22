@@ -1,5 +1,4 @@
 import { TextField } from '@mui/material'
-import PropTypes from 'prop-types'
 
 export const CustomTextField = ({
   name,
@@ -29,7 +28,8 @@ export const CustomTextField = ({
   size?: 'small' | 'medium',
   multiline?: boolean,
   rows?: string,
-  value?: string
+  value?: string,
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => (
   <TextField
     defaultValue={ defaultValue }
@@ -48,36 +48,3 @@ export const CustomTextField = ({
     {...otherProps}
   />
 )
-
-CustomTextField.defaultProps = {
-  label: '',
-  disabled: false,
-  type: 'string',
-  fullWidth: true,
-  variant: 'outlined',
-  required: false,
-  defaultValue: '',
-  placeholder: null,
-  size: 'medium',
-  multiline: false,
-  rows: null,
-  value: undefined,
-  name: ''
-}
-
-CustomTextField.propTypes = {
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  label: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  variant: PropTypes.oneOf([ 'filled', 'outlined', 'standard' ]),
-  defaultValue: PropTypes.string,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  size: PropTypes.oneOf([ 'small', 'medium' ]),
-  multiline: PropTypes.bool,
-  rows: PropTypes.string,
-  onChange: PropTypes.func,
-  value: PropTypes.string,
-}
