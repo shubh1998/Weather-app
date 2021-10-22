@@ -288,11 +288,11 @@ export const useViewHistoricalController = () => {
     }
 
     const fetchAndSetData = () => {
-        new Promise( (resolve, reject) => {
+        new Promise<HistoricalDataType>( (resolve, reject) => {
             setTimeout(() => {
               resolve(historicalData)
             }, 500)
-        }).then((res:any) => {
+        }).then(res => {
             setdataLoaded(true)
             setData(res)
             const labels = res.data.map((item: HistoricalDataArrayType) => item.datetime)
