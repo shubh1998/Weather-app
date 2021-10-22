@@ -54,7 +54,7 @@ export const Home = () => {
                       </Grid>
                     </Grid>
                     <VerticalSpace vSpace={1} />
-                    <CustomButton size="medium" label="View" variant="contained" color="info" onClick={onClickViewHistorical} />
+                    <CustomButton size="medium" label="View Historical Weather Report" variant="contained" color="info" onClick={onClickViewHistorical} />
                   </Center>
               </CardContent>
             </CardElement> 
