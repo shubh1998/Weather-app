@@ -5,7 +5,7 @@ import { Navbar } from '../components/layouts/NavBar';
 const RouteValidator = ({hasNavbar, Component, path}: {
     hasNavbar: boolean,
     Component: ComponentType,
-    path?: string
+    path?: string | undefined
 }) => {
     if(path=='/') return <Redirect to='/weather' />
     if (hasNavbar) {

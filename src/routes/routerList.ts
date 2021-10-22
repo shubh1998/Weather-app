@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ComponentType } from "react";
 import { NotFoundPage } from "../components/layouts/NotFound";
 import { Home } from "../pages/Home/Home";
 import { ViewHistorical } from "../pages/ViewHistorical/ViewHistorical";
@@ -7,7 +7,7 @@ type routes = {
   key: number,
   label: string,
   path?: string,
-  Component: ReactNode,
+  Component: ComponentType,
   hasNavbar: boolean,
 }[]
 
