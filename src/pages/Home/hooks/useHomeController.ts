@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useHistory, useLocation } from "react-router"
 import axios from 'axios';
 import { useGeoLocation } from "./useGeoLocation";
+import { fetchPresentLocationWeatherData } from "../../../utils/services/fetchPresentLocationWeatherData";
 
 export const useHomeController = () => {
     const history = useHistory()
@@ -20,7 +21,7 @@ export const useHomeController = () => {
 
     const fetchCurrentLocationWeatherData = async(lat: number, lng: number)=>{
         try{
-            const res: any = await axios(`${process.env.REACT_APP_API_URL}/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_API_SECRET_KEY}`)
+            const res: any = await fetchPresentLocationWeatherData({data: {lat, lng}})
             if(res.data){
                 setCityForRouteQuery(res.data.name)
                 setData(res.data)
