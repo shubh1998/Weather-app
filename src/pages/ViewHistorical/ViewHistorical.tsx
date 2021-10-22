@@ -24,15 +24,15 @@ const rows = [
   createData('City', 'Indore'),
   createData('Country', 'India'),
   createData('Wind Speed', '7.41'),
-  createData('Minimum Tempreture', '24° C'),
-  createData('Maximum Tempreture', '24° C'),
+  createData('Minimum Temperature', '24° C'),
+  createData('Maximum Temperature', '24° C'),
   createData('Pressure', '1004'),
   createData('Sea Level', '1004'),
   createData('Ground Level', '1004'),
 ];
 
 export const ViewHistorical = ()=>{
-  const { windGraphData, dataLoaded, tempretureGraphData, cloudAndSolarGraphData, data } = useViewHistoricalController()
+  const { windGraphData, dataLoaded, temperatureGraphData, cloudAndSolarGraphData, data } = useViewHistoricalController()
 
   return (
     dataLoaded 
@@ -43,7 +43,7 @@ export const ViewHistorical = ()=>{
             <Link to="/"><CustomTypography variant="h6" label="Home"/></Link><div>&nbsp;</div><CustomTypography variant="h6" label="/ View Details"/>
         </DisplayFlex>
         <VerticalSpace vSpace={1} />
-        {tempretureGraphData && <Line data={tempretureGraphData} height={20} width={100}/> }
+        {temperatureGraphData && <Line data={temperatureGraphData} height={20} width={100}/> }
         <VerticalSpace vSpace={1} />
         {windGraphData && <Line data={windGraphData} height={20} width={100}/> }
         <VerticalSpace vSpace={1} />
@@ -58,7 +58,7 @@ export const ViewHistorical = ()=>{
               <Table sx={{ minWidth: 650 }} aria-label="simple table">     
                   <TableHead>
                     <TableRow>
-                      <TableCell>Tempreture</TableCell>
+                      <TableCell>Temperature</TableCell>
                       {
                             data.data.map((item:any) => <TableCell>{item.datetime}</TableCell>)
                       }

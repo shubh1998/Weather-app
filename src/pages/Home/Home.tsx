@@ -31,7 +31,7 @@ export const Home = () => {
                       <LocationDisplayIcon /> <StyledCityFont>{data.name}</StyledCityFont>
                     <Grid container>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
-                        <CustomTypography label="Minimum tempreture"/>
+                        <CustomTypography label="Minimum Temperature"/>
                       </Grid>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
                         <CustomTypography label={`${data.main.temp_min}° C`} />
@@ -39,7 +39,7 @@ export const Home = () => {
                     </Grid>
                     <Grid container>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
-                        <CustomTypography label="Maximum tempreture"/>
+                        <CustomTypography label="Maximum Temperature"/>
                       </Grid>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
                         <CustomTypography label={`${data.main.temp_max}° C`} />

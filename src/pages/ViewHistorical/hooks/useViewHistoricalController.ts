@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 export const useViewHistoricalController = () => {
     const [data, setData] = useState<any>(null)
     const [dataLoaded, setdataLoaded] = useState<boolean>(false)
-    const [tempretureGraphData, setTempretureGraphData] = useState<any>(null)
+    const [temperatureGraphData, setTemperatureGraphData] = useState<any>(null)
     const [windGraphData, setWindGraphData] = useState<any>(null)
     const [cloudAndSolarGraphData, setCloudAndSolarGraphData] = useState<any>(null)
     const historicalData = {
@@ -290,24 +290,24 @@ export const useViewHistoricalController = () => {
             setdataLoaded(true)
             setData(res)
             const labels = res.data.map((item:any) => item.datetime)
-            const minTempreture = res.data.map((item:any) => item.min_temp)
-            const maxTempreture = res.data.map((item:any) => item.max_temp)
+            const minTemperature = res.data.map((item:any) => item.min_temp)
+            const maxTemperature = res.data.map((item:any) => item.max_temp)
             const maxWindSpeed = res.data.map((item:any) => item.max_wind_spd)
             const solarRadData = res.data.map((item:any) => item.solar_rad)
             const cloudsData = res.data.map((item:any) => item.clouds)
-            setTempretureGraphData({
+            setTemperatureGraphData({
                 labels,
                 datasets: [
                     {
-                      label: "Max Tempreture",
-                      data: minTempreture,
+                      label: "Max Temperature",
+                      data: minTemperature,
                       fill: false,
                       backgroundColor: "rgba(75,192,192,0.2)",
                       borderColor: "rgb(155,50,23)"
                     },
                     {
-                      label: "Min Tempreture",
-                      data: maxTempreture,
+                      label: "Min Temperature",
+                      data: maxTemperature,
                       fill: false,
                       borderColor: "rgb(229,92,92)"
                     }
@@ -352,7 +352,7 @@ export const useViewHistoricalController = () => {
 
     return {
         dataLoaded,
-        tempretureGraphData,
+        temperatureGraphData,
         windGraphData,
         cloudAndSolarGraphData,
         data,
