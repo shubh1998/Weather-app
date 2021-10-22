@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 
 export const useViewHistoricalController = () => {
     const [data, setData] = useState<any>(null)
@@ -6,6 +7,8 @@ export const useViewHistoricalController = () => {
     const [temperatureGraphData, setTemperatureGraphData] = useState<any>(null)
     const [windGraphData, setWindGraphData] = useState<any>(null)
     const [cloudAndSolarGraphData, setCloudAndSolarGraphData] = useState<any>(null)
+    const { search } = useLocation()
+    const cityQuery= new URLSearchParams(search).get('city')
     const historicalData = {
         "timezone": "Asia/Kolkata",
         "state_code": "35",
@@ -356,5 +359,6 @@ export const useViewHistoricalController = () => {
         windGraphData,
         cloudAndSolarGraphData,
         data,
+        cityQuery
     }
 }
