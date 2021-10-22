@@ -3,6 +3,7 @@ import { useHistory, useLocation } from "react-router"
 import { useGeoLocation } from "./useGeoLocation";
 import { fetchPresentLocationWeatherData } from "../../../utils/services/fetchPresentLocationWeatherData";
 import { fetchWeatherDataByCity } from "../../../utils/services/fetchWeatherDataByCity";
+import { WeatherApiResponse } from "../../../utils/types/WeatherApiResponse";
 
 export const useHomeController = () => {
     const history = useHistory()
@@ -11,7 +12,7 @@ export const useHomeController = () => {
     const cityQuery= new URLSearchParams(search).get('city')
     const [city, setCity] = useState<string>('')
     const [cityForRouteQuery, setCityForRouteQuery] = useState<string>('')
-    const [data, setData] = useState<any>(null)
+    const [data, setData] = useState<WeatherApiResponse | null>(null)
     const [locationAllow, setLocationAllow] = useState({
         allow: false,
         message: 'loading....'
@@ -21,10 +22,10 @@ export const useHomeController = () => {
 
     const fetchCurrentLocationWeatherData = async(lat: number, lng: number)=>{
         try{
-            const res: any = await fetchPresentLocationWeatherData({data: {lat, lng}})
-            if(res.data){
-                setCityForRouteQuery(res.data.name)
-                setData(res.data)
+            const res: WeatherApiResponse = await fetchPresentLocationWeatherData({data: {lat, lng}})
+            if(res){
+                setCityForRouteQuery(res.name)
+                setData(res)
                 setCurrentLocation(true)
             }
         }catch(error){
@@ -59,10 +60,10 @@ export const useHomeController = () => {
 
     const fetchWeatherData = async({cityName}: {cityName: string})=>{
         try{
-            const res: any = await fetchWeatherDataByCity({cityName})
-            if(res.data){
+            const res: WeatherApiResponse = await fetchWeatherDataByCity({cityName})
+            if(res){
                 setCurrentLocation(false)
-                setData(res.data)
+                setData(res)
             }
         }catch(error){
             setData(null)
