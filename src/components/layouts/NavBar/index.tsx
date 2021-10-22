@@ -2,9 +2,9 @@ import { AppBar, Paper, Toolbar, Typography } from '@mui/material';
 import styled from '@emotion/styled'
 import { Footer } from '../Footer';
 import { VerticalSpace } from '../../ui-kit/VerticalSpace';
-import { useTheme } from '@mui/system';
+import { ReactNode } from 'react';
 
-export const Navbar = ({ children }:{ children?: any }) => {
+export const Navbar = ({ children }:{ children?: ReactNode }) => {
     return (
         <>
             <PaperStyled>

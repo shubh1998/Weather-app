@@ -52,7 +52,7 @@ export const useHomeController = () => {
         history.push(`/view-historical?city=${cityForRouteQuery}&startdate=2021-10-06&enddate=2021-10-12`)
     } 
     
-    const getSearchText = (value: any)=>{
+    const getSearchText = (value: string)=>{
         history.push(`?city=${value}`)
     }
 

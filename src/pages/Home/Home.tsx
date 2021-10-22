@@ -16,7 +16,7 @@ export const Home = () => {
     locationAllow.allow ?
       (
         <Container>
-          <CustomTextField label="Search" placeholder="Search by city" onChange={(e: any) => getSearchText(e.target.value)} value={city} size="medium"/>
+          <CustomTextField label="Search" placeholder="Search by city" onChange={(e: React.ChangeEvent<HTMLInputElement>) => getSearchText(e.target.value)} value={city} fullWidth/>
         <VerticalSpace vSpace={2} />
         {
           data ? 
