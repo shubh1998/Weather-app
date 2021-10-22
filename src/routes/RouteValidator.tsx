@@ -1,12 +1,13 @@
-import { Fragment, ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+import { Redirect } from 'react-router';
 import { Navbar } from '../components/layouts/NavBar';
 
-const RouteValidator = ({hasNavbar, Component, path, ...otherProps }: {
+const RouteValidator = ({hasNavbar, Component, path}: {
     hasNavbar: boolean,
     Component: any,
     path?: string
 }) => {
+    if(path=='/') return <Redirect to='/weather' />
     if (hasNavbar) {
         return (
             <Fragment>

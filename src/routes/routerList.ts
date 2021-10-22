@@ -14,9 +14,16 @@ type routes = {
 
 const routerList: routes = [
   {
-    key: 1,
+    key: 0,
     label: "Home",
     path: "/",
+    Component: Home,
+    hasNavbar: true,
+  },
+  {
+    key: 1,
+    label: "Home",
+    path: "/weather",
     Component: Home,
     hasNavbar: true,
   },
