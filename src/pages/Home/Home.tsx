@@ -61,7 +61,9 @@ export const Home = () => {
           )  
           :
           (
-            <CustomTypography variant="h5" label={message ? message : 'Loading.....'}/>
+            <Center>
+              <CustomTypography variant="h5" label={message ? message : 'Loading.....'}/>
+            </Center>
           )
         }
       </Container>
