@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
+import { HistoricalDataType } from '../../../utils/types/HistoricalDataType'
+import { LineChartGraphDataType } from '../../../utils/types/LineChartGraphDataType'
 
 export const useViewHistoricalController = () => {
-    const [data, setData] = useState<any>(null)
+    const [data, setData] = useState<HistoricalDataType | null>(null)
     const [dataLoaded, setdataLoaded] = useState<boolean>(false)
-    const [temperatureGraphData, setTemperatureGraphData] = useState<any>(null)
-    const [windGraphData, setWindGraphData] = useState<any>(null)
-    const [cloudAndSolarGraphData, setCloudAndSolarGraphData] = useState<any>(null)
+    const [temperatureGraphData, setTemperatureGraphData] = useState<LineChartGraphDataType | null>(null)
+    const [windGraphData, setWindGraphData] = useState<LineChartGraphDataType | null>(null)
+    const [cloudAndSolarGraphData, setCloudAndSolarGraphData] = useState<LineChartGraphDataType | null>(null)
     const { search } = useLocation()
     const cityQuery= new URLSearchParams(search).get('city')
     const historicalData = {
