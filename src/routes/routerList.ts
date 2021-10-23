@@ -11,7 +11,9 @@ type routes = {
   hasNavbar: boolean,
 }[]
 
-
+/**
+ * routeList contains the route for individual components.
+ */
 const routerList: routes = [
   {
     key: 0,
