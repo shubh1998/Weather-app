@@ -6,6 +6,10 @@ import { fetchWeatherDataByCity } from "../../../utils/services/fetchWeatherData
 import { WeatherApiResponse } from "../../../utils/types/WeatherApiResponse";
 import _ from 'lodash'
 
+/**
+ * useHomeController hook contains logical code of Home component
+ * @returns all logical states and functions which helps to display data to user.
+ */
 export const useHomeController = () => {
     const history = useHistory()
     const location = useGeoLocation()
@@ -23,7 +27,27 @@ export const useHomeController = () => {
     const [message, setMessage] = useState('')
     const [cardBGColor, setCardBGColor] = useState('#FFFFFF')
 
-    const fetchCurrentLocationWeatherData = async(lat: number, lng: number)=>{
+    /**
+     * Mock function redirects user on view historical page component.
+     */
+    const onClickViewHistorical = ()=>{
+        history.push(`/view-historical?city=${cityForRouteQuery}&startdate=2021-10-06&enddate=2021-10-12`)
+    } 
+    
+    /**
+     * Mock function gets the search box value whatever user types in and push that value on weather route using query string "city".
+     * @param value accept string
+     */
+    const getSearchText = (value: string)=>{
+        history.push(`?city=${value}`)
+    }
+
+    /**
+     * Mock function fetch weather data of user's current location.
+     * @param lat accept number
+     * @param lng accept number
+     */
+    const fetchCurrentLocationWeatherData = async({lat, lng}:{lat: number, lng: number})=>{
         try{
             const res: WeatherApiResponse = await fetchPresentLocationWeatherData({data: {lat, lng}})
             if(res){
@@ -37,31 +61,10 @@ export const useHomeController = () => {
         }
     }
 
-    useEffect(()=>{
-        if(location.loaded){
-            setLocationAllow({
-                allow: true,
-                message: 'location accessed'
-            })
-            if(!cityQuery){
-                fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
-            }
-        }else{
-            setLocationAllow({
-                allow: false,
-                message: location.error.message
-            })
-        }
-    }, [location])
-
-    const onClickViewHistorical = ()=>{
-        history.push(`/view-historical?city=${cityForRouteQuery}&startdate=2021-10-06&enddate=2021-10-12`)
-    } 
-    
-    const getSearchText = (value: string)=>{
-        history.push(`?city=${value}`)
-    }
-
+    /**
+     * Mock function to fetch weather data according to city (searched in the search box). 
+     * @param cityName accept string
+     */
     const fetchWeatherData = async({cityName}: {cityName: string})=>{
         try{
             const res: WeatherApiResponse = await fetchWeatherDataByCity({cityName})
@@ -76,27 +79,11 @@ export const useHomeController = () => {
             }
         }
     }
-
-    useEffect(()=>{
-        if(cityQuery != null){
-            setData(null)
-            setMessage('Loading...')
-            setCityForRouteQuery(cityQuery)
-            setInputValue(cityQuery)
-            _.debounce(()=>{
-                setCity(cityQuery)
-            }, 2000)();
-        }
-    }, [search, location, cityQuery])
-
-    useEffect(()=>{
-        if(city !== '' && cityQuery != null){
-            fetchWeatherData({cityName: city})
-        }else if(location.loaded){
-            fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
-        }
-    }, [city])
-
+    
+    /**
+     * Mock function to set background color of card element according to weather condition.
+     * @param key accept string
+     */
     const setCardBGAccordingToWeatherCondition = ({key}: {key: string})=>{
         let bgColor = cardBGColor
         switch (key) {
@@ -149,6 +136,55 @@ export const useHomeController = () => {
         setCardBGColor(bgColor)
     }
 
+    /**
+     * Effect runs whenenver location state updates.
+     */
+    useEffect(()=>{
+        if(location.loaded){
+            setLocationAllow({
+                allow: true,
+                message: 'location accessed'
+            })
+            if(!cityQuery){
+                fetchCurrentLocationWeatherData({lat: location.coordinates.lat, lng: location.coordinates.lng})
+            }
+        }else{
+            setLocationAllow({
+                allow: false,
+                message: location.error.message
+            })
+        }
+    }, [location])
+
+    /**
+     * Effect runs whenever location state, search and cityQuery updates.
+     */
+    useEffect(()=>{
+        if(cityQuery != null){
+            setData(null)
+            setMessage('Loading...')
+            setCityForRouteQuery(cityQuery)
+            setInputValue(cityQuery)
+            _.debounce(()=>{
+                setCity(cityQuery)
+            }, 2000)();
+        }
+    }, [search, location, cityQuery])
+
+    /**
+    * Effect runs whenever city state updates.
+    */
+    useEffect(()=>{
+        if(city !== '' && cityQuery != null){
+            fetchWeatherData({cityName: city})
+        }else if(location.loaded){
+            fetchCurrentLocationWeatherData({lat: location.coordinates.lat, lng: location.coordinates.lng})
+        }
+    }, [city])
+
+    /**
+    * Effect runs whenever data state updates.
+    */
     useEffect(()=>{
         if(data){
             setCardBGAccordingToWeatherCondition({key: data.weather[0].main})
