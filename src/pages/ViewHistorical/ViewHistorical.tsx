@@ -5,14 +5,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Card, CardContent, Container, Grid } from '@mui/material';
+import { CardContent, Container } from '@mui/material';
 import { CustomTypography } from '../../components/ui-kit/Typography';
 import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { Link } from 'react-router-dom';
-import styled from '@emotion/styled'
 import { useViewHistoricalController } from './hooks/useViewHistoricalController';
 import { Line } from "react-chartjs-2";
 import { HistoricalDataArrayType } from '../../utils/types/HistoricalDataArrayType';
+import { CardElement, Center, DisplayFlex } from './styles/ViewHistorical.StyledComponents';
 
 export const ViewHistorical = ()=>{
   const { windGraphData, dataLoaded, temperatureGraphData, cloudAndSolarGraphData, data, cityQuery } = useViewHistoricalController()
@@ -119,21 +119,3 @@ export const ViewHistorical = ()=>{
     )
   );
 }
-
-const DisplayFlex = styled.div({
-    display: 'flex'
-})
-
-const Center = styled.div({
-  textAlign: 'center'
-})
-
-const CardElement = styled(Card)({
-  "&&":{
-    boxShadow: '0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%)'
-  }
-})
-
-const AlignRight = styled.div({
-  textAlign: 'right'
-})
