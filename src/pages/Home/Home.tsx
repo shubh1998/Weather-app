@@ -1,13 +1,11 @@
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import styled from '@emotion/styled'
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { CustomTypography } from '../../components/ui-kit/Typography';
 import { Container, Grid } from '@mui/material';
 import { CustomButton } from '../../components/ui-kit/Button';
 import { CustomTextField } from '../../components/ui-kit/TextField';
 import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { useHomeController } from './hooks/useHomeController'
+import { CardElement, Center, LocationDisplayIcon, StyledBoldFont } from './styles/Home.StyledComponents';
 
 export const Home = () => {
   const { onClickViewHistorical, getSearchText, data, locationAllow, message, currentLocation, inputValue, cardBGColor } = useHomeController()
@@ -76,24 +74,3 @@ export const Home = () => {
       )
   );
 }
-
-const Center = styled.div({
-    textAlign: 'center'
-})
-
-const LocationDisplayIcon = styled(LocationOnIcon)({
-  paddingTop: '4px'
-})
-
-const StyledBoldFont = styled.span({
-  fontSize: 21,
-  fontWeight: 500, 
-  marginBottom: 10
-})
-
-const CardElement = styled(Card)<{cardBGColorProp: string}>(({cardBGColorProp})=>({
-  "&&":{
-    boxShadow: '0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%), 0px 1px 3px 0px rgb(0 0 0 / 12%)'
-  },
-  backgroundColor: cardBGColorProp,
-}))
