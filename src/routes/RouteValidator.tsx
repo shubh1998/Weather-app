@@ -1,4 +1,4 @@
-import { ComponentType, Fragment } from 'react';
+import { ComponentType } from 'react';
 import { Redirect } from 'react-router';
 import { Navbar } from '../components/layouts/NavBar';
 
@@ -10,11 +10,11 @@ const RouteValidator = ({hasNavbar, Component, path}: {
     if(path=='/') return <Redirect to='/weather' />
     if (hasNavbar) {
         return (
-            <Fragment>
+            <>
                 <Navbar>
                     <Component />
                 </Navbar>
-            </Fragment>
+            </>
         );
     }
     return <Component />
