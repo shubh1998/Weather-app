@@ -21,6 +21,7 @@ export const useHomeController = () => {
     })
     const [currentLocation, setCurrentLocation] = useState<boolean>(false)
     const [message, setMessage] = useState('')
+    const [cardBGColor, setCardBGColor] = useState('#FFFFFF')
 
     const fetchCurrentLocationWeatherData = async(lat: number, lng: number)=>{
         try{
@@ -96,6 +97,64 @@ export const useHomeController = () => {
         }
     }, [city])
 
+    const setCardBGAccordingToWeatherCondition = ({key}: {key: string})=>{
+        let bgColor = cardBGColor
+        switch (key) {
+            case "Clouds":
+                bgColor = '#B3D0FF'
+                break;
+            case "Thunderstorm":
+                bgColor = '#CCCCCC'
+                break;
+            case "Drizzle":
+                bgColor = '#B3FF9C'
+                break;
+            case "Rain":
+                bgColor = '#48ABFE'
+                break;            
+            case "Snow":
+                bgColor = '#DFFCFE'
+                break;
+            case "Clear":
+                bgColor = '#FFFFFF'
+                break;            
+            case "Mist":
+                bgColor = '#D6E1E7'
+                break;
+            case "Smoke":
+                bgColor = '#C5C5C5'
+                break;            
+            case "Haze":
+                bgColor = '#E6D4C3'
+                break;
+            case "Dust":
+                bgColor = '#D1C2A8'
+                break;
+            case "Sand":
+                bgColor = '#E2BE88'
+                break;
+            case "Ash":
+                bgColor = '#CBCEC7'
+                break;
+            case "Squall":
+                bgColor = '#B9CEDB'
+                break;
+            case "Tornado":
+                bgColor = '#C4BEA9'
+                break;
+            default:
+                bgColor = '#FFFFFF'
+                break;
+        }
+        setCardBGColor(bgColor)
+    }
+
+    useEffect(()=>{
+        if(data){
+            setCardBGAccordingToWeatherCondition({key: data.weather[0].main})
+        }
+    }, [data])
+
     return {
         onClickViewHistorical,
         getSearchText,
@@ -104,6 +163,7 @@ export const useHomeController = () => {
         locationAllow,
         message,
         currentLocation,
-        inputValue
+        inputValue,
+        cardBGColor
     }
 }
