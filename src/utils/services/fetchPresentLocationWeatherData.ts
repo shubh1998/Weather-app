@@ -6,6 +6,11 @@ type dataType = {
     lng: number 
 }
 
+/**
+ * Mock function to fetch weather data of current or present location.
+ * @param data: contains object which have "lat", "lng" key-value pair.
+ * @returns promise with weather data of present or current location.
+ */
 export const fetchPresentLocationWeatherData = async ({ 
     data 
 }:{ 
