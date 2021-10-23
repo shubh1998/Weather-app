@@ -5,6 +5,10 @@ import { HistoricalDataType } from '../../../utils/types/HistoricalDataType'
 import { LineChartGraphDataType } from '../../../utils/types/LineChartGraphDataType'
 import historicalData from '../../../utils/JSON/historicalData.json'
 
+/**
+ * useViewHistoricalController hook contains logical code of ViewHistorical component
+ * @returns all logical states and functions which helps to display data to user.
+ */
 export const useViewHistoricalController = () => {
     const [data, setData] = useState<HistoricalDataType | null>(null)
     const [dataLoaded, setdataLoaded] = useState<boolean>(false)
@@ -15,7 +19,10 @@ export const useViewHistoricalController = () => {
     const cityQuery= new URLSearchParams(search).get('city')
     const dummyHistoricalData = historicalData;
 
-    const fetchAndSetData = () => {
+    /**
+     * Mock function to fetch and set historical data of weather.
+     */
+    const fetchHistoricalWeatherData = () => {
         new Promise<HistoricalDataType>( (resolve, reject) => {
             setTimeout(() => {
               resolve(dummyHistoricalData)
@@ -80,8 +87,11 @@ export const useViewHistoricalController = () => {
         })
     }
 
+    /**
+     * Effect runs first time when component loaded first time i.e. when component mounts.
+     */
     useEffect(() => {
-        fetchAndSetData()
+        fetchHistoricalWeatherData()
     }, [])
 
     return {
