@@ -4,6 +4,7 @@ import { useGeoLocation } from "./useGeoLocation";
 import { fetchPresentLocationWeatherData } from "../../../utils/services/fetchPresentLocationWeatherData";
 import { fetchWeatherDataByCity } from "../../../utils/services/fetchWeatherDataByCity";
 import { WeatherApiResponse } from "../../../utils/types/WeatherApiResponse";
+import _ from 'lodash'
 
 export const useHomeController = () => {
     const history = useHistory()
@@ -11,6 +12,7 @@ export const useHomeController = () => {
     const { search } = useLocation()
     const cityQuery= new URLSearchParams(search).get('city')
     const [city, setCity] = useState<string>('')
+    const [inputValue, setInputValue] = useState<string>('')
     const [cityForRouteQuery, setCityForRouteQuery] = useState<string>('')
     const [data, setData] = useState<WeatherApiResponse | null>(null)
     const [locationAllow, setLocationAllow] = useState({
@@ -40,7 +42,9 @@ export const useHomeController = () => {
                 allow: true,
                 message: 'location accessed'
             })
-            fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
+            if(!cityQuery){
+                fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
+            }
         }else{
             setLocationAllow({
                 allow: false,
@@ -50,7 +54,6 @@ export const useHomeController = () => {
     }, [location])
 
     const onClickViewHistorical = ()=>{
-        console.log(city)
         history.push(`/view-historical?city=${cityForRouteQuery}&startdate=2021-10-06&enddate=2021-10-12`)
     } 
     
@@ -65,23 +68,33 @@ export const useHomeController = () => {
                 setCurrentLocation(false)
                 setData(res)
             }
-        }catch(error){
+        }catch({ config, data, headers, request, status, statusText}){
             setData(null)
-            setMessage('City not found')
+            if(status === 404){
+                setMessage('City not found')
+            }
         }
     }
 
     useEffect(()=>{
         if(cityQuery != null){
+            setData(null)
+            setMessage('Loading...')
             setCityForRouteQuery(cityQuery)
-            setCity(cityQuery)
-            if(cityQuery !== ""){
-                fetchWeatherData({cityName: cityQuery})
-            }else if(location.loaded){
-                fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
-            }
+            setInputValue(cityQuery)
+            _.debounce(()=>{
+                setCity(cityQuery)
+            }, 2000)();
         }
-    }, [search, location])
+    }, [search, location, cityQuery])
+
+    useEffect(()=>{
+        if(city !== '' && cityQuery != null){
+            fetchWeatherData({cityName: city})
+        }else if(location.loaded){
+            fetchCurrentLocationWeatherData(location.coordinates.lat, location.coordinates.lng)
+        }
+    }, [city])
 
     return {
         onClickViewHistorical,
@@ -90,6 +103,7 @@ export const useHomeController = () => {
         data,
         locationAllow,
         message,
-        currentLocation
+        currentLocation,
+        inputValue
     }
 }

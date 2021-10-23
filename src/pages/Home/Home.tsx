@@ -10,13 +10,13 @@ import { VerticalSpace } from '../../components/ui-kit/VerticalSpace';
 import { useHomeController } from './hooks/useHomeController'
 
 export const Home = () => {
-  const { onClickViewHistorical, getSearchText, city, data, locationAllow, message, currentLocation } = useHomeController()
+  const { onClickViewHistorical, getSearchText, data, locationAllow, message, currentLocation, inputValue } = useHomeController()
 
   return ( 
     locationAllow.allow ?
       (
         <Container>
-          <CustomTextField label="Search" placeholder="Search by city" onChange={(e: React.ChangeEvent<HTMLInputElement>) => getSearchText(e.target.value)} value={city} fullWidth/>
+          <CustomTextField label="Search" placeholder="Search by city" onChange={(e: React.ChangeEvent<HTMLInputElement>) => getSearchText(e.target.value)} value={inputValue} fullWidth/>
         <VerticalSpace vSpace={2} />
         {
           data ? 
