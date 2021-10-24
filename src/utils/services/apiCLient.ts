@@ -19,5 +19,5 @@ apiClient.interceptors.response.use(
   },
   ({ response }: { response: AxiosResponse }) => {
     return Promise.reject(response)
-  },
+  }
 )

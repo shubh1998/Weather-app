@@ -12,34 +12,34 @@ export const CustomButton = ({
   startIcon,
   endIcon,
   disableElevation,
-  color
+  color,
 }: {
-  type?: 'submit' | 'button',
-  variant?: 'contained' | 'outlined' | 'text',
-  size?: 'large' | 'medium' | 'small',
-  label?: string,
-  disabled?: boolean,
-  fullWidth?: boolean,
-  onClick?: () => void,
-  startIcon?: ReactElement,
-  endIcon?: ReactElement,
-  disableElevation?: boolean,
-  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
+  type?: 'submit' | 'button'
+  variant?: 'contained' | 'outlined' | 'text'
+  size?: 'large' | 'medium' | 'small'
+  label?: string
+  disabled?: boolean
+  fullWidth?: boolean
+  onClick?: () => void
+  startIcon?: ReactElement
+  endIcon?: ReactElement
+  disableElevation?: boolean
+  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'
 }) => {
   return (
     <Button
-      type={ type }
-      disabled={ disabled }
-      fullWidth={ fullWidth }
-      variant={ variant }
-      onClick={ onClick }
-      size={ size }
-      startIcon={ startIcon }
-      endIcon={ endIcon }
-      disableElevation={ disableElevation }
-      color={ color }
+      type={type}
+      disabled={disabled}
+      fullWidth={fullWidth}
+      variant={variant}
+      onClick={onClick}
+      size={size}
+      startIcon={startIcon}
+      endIcon={endIcon}
+      disableElevation={disableElevation}
+      color={color}
     >
-      { label }
+      {label}
     </Button>
   )
 }

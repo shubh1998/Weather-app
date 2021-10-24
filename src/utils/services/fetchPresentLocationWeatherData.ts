@@ -1,9 +1,9 @@
 import { WeatherApiResponse } from '../types/WeatherApiResponse'
 import { apiClient } from './apiCLient'
 
-type dataType = { 
-    lat: number, 
-    lng: number 
+type dataType = {
+  lat: number
+  lng: number
 }
 
 /**
@@ -11,10 +11,11 @@ type dataType = {
  * @param data: contains object which have "lat", "lng" key-value pair.
  * @returns promise with weather data of present or current location.
  */
-export const fetchPresentLocationWeatherData = async ({ 
-    data 
-}:{ 
-    data:dataType 
-}): Promise<WeatherApiResponse> => await apiClient.get(
+export const fetchPresentLocationWeatherData = async ({
+  data,
+}: {
+  data: dataType
+}): Promise<WeatherApiResponse> =>
+  await apiClient.get(
     `/weather?lat=${data.lat}&lon=${data.lng}&appid=${process.env.REACT_APP_API_SECRET_KEY}`
-    )
+  )

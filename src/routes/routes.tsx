@@ -1,6 +1,7 @@
-import { Route, Switch } from "react-router-dom";
-import routes from "./routerList";
-import RouteValidator from "./RouteValidator";
+import { Route, Switch } from 'react-router-dom'
+
+import routes from './routerList'
+import RouteValidator from './RouteValidator'
 
 const CustomRoutes = () => (
   <>
@@ -15,6 +16,6 @@ const CustomRoutes = () => (
       ))}
     </Switch>
   </>
-);
+)
 
-export default CustomRoutes;
+export default CustomRoutes

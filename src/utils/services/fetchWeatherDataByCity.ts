@@ -6,10 +6,9 @@ import { apiClient } from './apiCLient'
  * @param cityName: accept string.
  * @returns promise with weather data according to city.
  */
-export const fetchWeatherDataByCity = async ({ 
-    cityName 
-}:{ 
-    cityName:string 
-}): Promise<WeatherApiResponse>  => await apiClient.get(
-    `/weather?q=${cityName}&appid=${process.env.REACT_APP_API_SECRET_KEY}`
-    )
+export const fetchWeatherDataByCity = async ({
+  cityName,
+}: {
+  cityName: string
+}): Promise<WeatherApiResponse> =>
+  await apiClient.get(`/weather?q=${cityName}&appid=${process.env.REACT_APP_API_SECRET_KEY}`)

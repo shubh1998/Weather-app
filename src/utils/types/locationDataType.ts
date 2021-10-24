@@ -1,6 +1,6 @@
 export type locationDataType = {
-    coords: {
-        latitude: number,
-        longitude: number
-    }
+  coords: {
+    latitude: number
+    longitude: number
+  }
 }
