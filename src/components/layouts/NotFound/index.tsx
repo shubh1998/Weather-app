@@ -1,6 +1,5 @@
-import styled from '@emotion/styled'
-
 import { CustomTypography } from '../../ui-kit/Typography'
+import { Center } from './styles/NotFoundPage.StyledComponents'
 
 export const NotFoundPage = () => {
   return (
@@ -9,10 +8,3 @@ export const NotFoundPage = () => {
     </Center>
   )
 }
-
-const Center = styled.div({
-  alignItems: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  marginTop: '40vh',
-})
