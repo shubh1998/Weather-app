@@ -1,9 +1,10 @@
-import styled from '@emotion/styled'
-import { AppBar, Paper, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar } from '@mui/material'
 import { ReactNode } from 'react'
 
+import { CustomTypography } from '../../ui-kit/Typography'
 import { VerticalSpace } from '../../ui-kit/VerticalSpace'
 import { Footer } from '../Footer'
+import { PaperStyled, WhiteFontWithNoDecoration } from './styles/Navbar.StyledComponents'
 
 export const Navbar = ({ children }: { children?: ReactNode }) => {
   return (
@@ -11,9 +12,9 @@ export const Navbar = ({ children }: { children?: ReactNode }) => {
       <PaperStyled>
         <AppBar position="static">
           <Toolbar>
-            <a href="/" style={{ color: '#FFFFFF', textDecoration: 'none' }}>
-              <Typography variant="h6">Weather App</Typography>
-            </a>
+            <WhiteFontWithNoDecoration to={'/'}>
+              <CustomTypography variant="h6" label="Weather App" />
+            </WhiteFontWithNoDecoration>
           </Toolbar>
         </AppBar>
       </PaperStyled>
@@ -23,7 +24,3 @@ export const Navbar = ({ children }: { children?: ReactNode }) => {
     </>
   )
 }
-
-const PaperStyled = styled(Paper)({
-  marginBottom: '20px',
-})
