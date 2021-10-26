@@ -32,7 +32,7 @@ yarn start
 * View button on Home page redirects you on next page which displays historical information of weather also shows summary in the form of charts and graphs
 
 ### Assumptions
-* Note: For View Historical page we used dummy data of 7 days due to subscription access control at OpenAPI
+## `Note: For View Historical page we used dummy data of 7 days due to subscription access control at OpenAPI ( Historical data APIs have limited number of accesses we can make with a free account and it needs to be purchased for using it seamlessly so thats why we have used dummy data of 7 days for representational purposes )`
 
 ## Development System specifications
 * OS - `Ubuntu 20.04`
