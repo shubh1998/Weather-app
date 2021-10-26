@@ -1,10 +1,7 @@
 # Weather App
-## Development
-### Running
 
 #### Create `.env.local` file
 ```
-REACT_APP_API_URL=https://api.openweathermap.org/data/2.5
 REACT_APP_API_SECRET_KEY=251964f21a5e93a44d5ae30436d5b93b
 ```
 
