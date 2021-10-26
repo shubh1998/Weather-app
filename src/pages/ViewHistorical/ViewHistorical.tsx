@@ -78,7 +78,7 @@ export const ViewHistorical = () => {
                   <TableCell align="center">Min</TableCell>
                   {data.data.map((item: HistoricalDataArrayType) => (
                     <TableCell align="center" key={item.min_temp}>
-                      {item.min_temp}
+                      {`${item.min_temp}° C`}
                     </TableCell>
                   ))}
                   <TableCell align="right"></TableCell>
@@ -87,7 +87,7 @@ export const ViewHistorical = () => {
                   <TableCell align="center">Max</TableCell>
                   {data.data.map((item: HistoricalDataArrayType) => (
                     <TableCell align="center" key={item.max_temp}>
-                      {item.max_temp}
+                      {`${item.max_temp}° C`}
                     </TableCell>
                   ))}
                 </TableRow>

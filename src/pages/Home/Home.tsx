@@ -54,14 +54,17 @@ export const Home = () => {
                   height="120"
                   width="120"
                 />
-                <CustomTypography label={`${data.main.temp}° C`} variant="h4" />
+                <CustomTypography
+                  label={`${(data.main.temp - 273.15).toFixed(2)}° C`}
+                  variant="h4"
+                />
                 <LocationDisplayIcon /> <StyledBoldFont>{data.name}</StyledBoldFont>
                 <Grid container>
                   <Grid item xs={6} sm={6} md={6} lg={6}>
                     <CustomTypography label="Minimum Temperature" />
                   </Grid>
                   <Grid item xs={6} sm={6} md={6} lg={6}>
-                    <CustomTypography label={`${data.main.temp_min}° C`} />
+                    <CustomTypography label={`${(data.main.temp_min - 273.15).toFixed(2)}° C`} />
                   </Grid>
                 </Grid>
                 <Grid container>
@@ -69,7 +72,7 @@ export const Home = () => {
                     <CustomTypography label="Maximum Temperature" />
                   </Grid>
                   <Grid item xs={6} sm={6} md={6} lg={6}>
-                    <CustomTypography label={`${data.main.temp_max}° C`} />
+                    <CustomTypography label={`${(data.main.temp_max - 273.15).toFixed(2)}° C`} />
                   </Grid>
                 </Grid>
                 <Grid container>
