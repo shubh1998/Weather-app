@@ -1,4 +1,5 @@
-import { WeatherApiResponse } from '../types/WeatherApiResponse'
+import { WeatherApiResponse } from 'utils/types/WeatherApiResponse'
+
 import { apiClient } from './apiCLient'
 
 /**

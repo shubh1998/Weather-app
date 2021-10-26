@@ -1,4 +1,5 @@
-import { CustomTypography } from '../../ui-kit/Typography'
+import { CustomTypography } from 'components/ui-kit/Typography'
+
 import { Center } from './styles/NotFoundPage.StyledComponents'
 
 export const NotFoundPage = () => {

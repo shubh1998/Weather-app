@@ -1,7 +1,6 @@
+import { Navbar } from 'components/layouts/NavBar'
 import { ComponentType } from 'react'
 import { Redirect } from 'react-router'
-
-import { Navbar } from '../components/layouts/NavBar'
 
 const RouteValidator = ({
   hasNavbar,

@@ -1,8 +1,7 @@
+import { NotFoundPage } from 'components/layouts/NotFound'
+import { Home } from 'pages/Home/Home'
+import { ViewHistorical } from 'pages/ViewHistorical/ViewHistorical'
 import { ComponentType } from 'react'
-
-import { NotFoundPage } from '../components/layouts/NotFound'
-import { Home } from '../pages/Home/Home'
-import { ViewHistorical } from '../pages/ViewHistorical/ViewHistorical'
 
 type routes = {
   key: number

@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-
-import { locationDataType } from '../../../utils/types/locationDataType'
-import { errorType } from '../../../utils/types/locationErrorType'
-import { locationStateType } from '../../../utils/types/locationStateType'
+import { locationDataType } from 'utils/types/locationDataType'
+import { errorType } from 'utils/types/locationErrorType'
+import { locationStateType } from 'utils/types/locationStateType'
 
 /**
  * useGeoLocation is a custom hook which detects a current location of user and return the "lat", "lng"

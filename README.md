@@ -27,7 +27,7 @@ yarn lint:fix
 
 ## Weather App Functionalities
 ```
-- Home page displays weather report acccording to current location.
+- Home page displays weather report according to current location.
 - On Home page there is a search box which helps you to search city and according to city you get your weather report.
 - View button on Home page redirects you on next page which displays historical information of weather also shows summary.
 ```

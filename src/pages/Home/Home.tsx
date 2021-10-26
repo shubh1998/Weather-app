@@ -1,10 +1,10 @@
 import { Container, Grid } from '@mui/material'
 import CardContent from '@mui/material/CardContent'
+import { CustomButton } from 'components/ui-kit/Button'
+import { CustomTextField } from 'components/ui-kit/TextField'
+import { CustomTypography } from 'components/ui-kit/Typography'
+import { VerticalSpace } from 'components/ui-kit/VerticalSpace'
 
-import { CustomButton } from '../../components/ui-kit/Button'
-import { CustomTextField } from '../../components/ui-kit/TextField'
-import { CustomTypography } from '../../components/ui-kit/Typography'
-import { VerticalSpace } from '../../components/ui-kit/VerticalSpace'
 import { useHomeController } from './hooks/useHomeController'
 import {
   CardElement,

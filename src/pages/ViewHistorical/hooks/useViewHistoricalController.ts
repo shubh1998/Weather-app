@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
-
-import historicalData from '../../../utils/JSON/historicalData.json'
-import { HistoricalDataArrayType } from '../../../utils/types/HistoricalDataArrayType'
-import { HistoricalDataType } from '../../../utils/types/HistoricalDataType'
-import { LineChartGraphDataType } from '../../../utils/types/LineChartGraphDataType'
+import historicalData from 'utils/JSON/historicalData.json'
+import { HistoricalDataArrayType } from 'utils/types/HistoricalDataArrayType'
+import { HistoricalDataType } from 'utils/types/HistoricalDataType'
+import { LineChartGraphDataType } from 'utils/types/LineChartGraphDataType'
 
 /**
  * useViewHistoricalController hook contains logical code of ViewHistorical component

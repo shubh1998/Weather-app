@@ -1,10 +1,10 @@
 import _ from 'lodash'
 import { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router'
+import { fetchPresentLocationWeatherData } from 'utils/services/fetchPresentLocationWeatherData'
+import { fetchWeatherDataByCity } from 'utils/services/fetchWeatherDataByCity'
+import { WeatherApiResponse } from 'utils/types/WeatherApiResponse'
 
-import { fetchPresentLocationWeatherData } from '../../../utils/services/fetchPresentLocationWeatherData'
-import { fetchWeatherDataByCity } from '../../../utils/services/fetchWeatherDataByCity'
-import { WeatherApiResponse } from '../../../utils/types/WeatherApiResponse'
 import { useGeoLocation } from './useGeoLocation'
 
 /**

@@ -1,9 +1,9 @@
 import { AppBar, Toolbar } from '@mui/material'
+import { Footer } from 'components/layouts/Footer'
+import { CustomTypography } from 'components/ui-kit/Typography'
+import { VerticalSpace } from 'components/ui-kit/VerticalSpace'
 import { ReactNode } from 'react'
 
-import { CustomTypography } from '../../ui-kit/Typography'
-import { VerticalSpace } from '../../ui-kit/VerticalSpace'
-import { Footer } from '../Footer'
 import { PaperStyled, WhiteFontWithNoDecoration } from './styles/Navbar.StyledComponents'
 
 export const Navbar = ({ children }: { children?: ReactNode }) => {
