@@ -173,7 +173,7 @@ export const useHomeController = () => {
       setInputValue(cityQuery)
       _.debounce(() => {
         setCity(cityQuery)
-      }, 2000)()
+      }, 500)()
     }
   }, [search, location, cityQuery])
 
