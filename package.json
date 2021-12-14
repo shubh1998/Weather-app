@@ -22,6 +22,8 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
     "lodash": "^4.17.21",
     "prettier": "^2.4.1",
     "react": "latest",
@@ -39,7 +41,22 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
-    "isready": "yarn format && yarn lint && yarn build"
+    "isready": "yarn format && yarn lint && yarn build",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn lint",
+      "prettier --write"
+    ]
   },
   "browserslist": {
     "production": [
